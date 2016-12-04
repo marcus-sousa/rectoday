@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express'),
+    router = express.Router(),
+    City = require('../models/city.js');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+
+    City.find({}, {"previsao": 0}, function (err, citiesNames) {
+        if (err) throw err;
+        res.render('index', {citiesNames: citiesNames});
+    });
+
 });
 
 module.exports = router;

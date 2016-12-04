@@ -1,2 +1,8 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<select>
+    {{#each citiesNames}}
+        <option value="{{this._doc._id}}">
+            {{this._doc.nome}} - {{this._doc.uf}}
+        </option>
+    {{/each}}
+</select>
